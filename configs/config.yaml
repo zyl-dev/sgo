@@ -1,0 +1,25 @@
+appname: "project template"
+mysqldb:
+  read:
+    name: "local:demo:read"
+    dsn: "root:123456@tcp(127.0.0.1:3306)/demo?charset=utf8mb4&parseTime=true"
+  write:
+    name: "local:demo:write"
+    dsn: "root:123456@tcp(127.0.0.1:3306)/demo?charset=utf8mb4&parseTime=true"
+redis:
+  redis:
+    address: "127.0.0.1:6379"
+    password: ""
+  prefix: "demo"
+  type: "redis"
+#  cluster:
+#    addrs:
+#      - ""
+#  ring:
+#    Addrs:
+#      key: ""
+#      Password: ""
+log:
+  level: "debug"
+  showSource: true
+  path: "./logs/"
