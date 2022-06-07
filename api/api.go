@@ -10,7 +10,7 @@ import (
 	gokitLogger "github.com/zyl-dev/gokit/common/logger"
 )
 
-func init()  {
+func init() {
 	configs.InitConfig()
 	// init mysql
 	mysqlCfg := make(map[string]gokitDBS.MySQLDSN)
@@ -24,11 +24,11 @@ func init()  {
 	gokitLogger.InitLog(configs.Config.Log.Level, configs.Config.Log.Path, "gin")
 }
 func main() {
-	if configs.Config.Pyroscope.IsEnabled && configs.Config.Pyroscope.Endpoint != "" {
+	if configs.Config.Pyroscope.IsEnabled &&
+		configs.Config.Pyroscope.Endpoint != "" {
 		_, _ = profiler.Start(profiler.Config{
-			// TODO: add SampleRate, https://github.com/pyroscope-io/pyroscope/blob/main/pkg/agent/profiler/profiler.go
 			ApplicationName: "pushGateway-api",
-			ServerAddress: configs.Config.Pyroscope.Endpoint,
+			ServerAddress:   configs.Config.Pyroscope.Endpoint,
 			ProfileTypes: []profiler.ProfileType{
 				profiler.ProfileCPU,
 				profiler.ProfileAllocObjects,

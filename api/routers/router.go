@@ -10,10 +10,12 @@ func InitRouter() *gin.Engine {
 	r := gin.New()
 	r.Use(gin.Recovery())
 	r.Use(gin.Logger())
-
 	publicRoute := r.Group("/demo")
-	demo := &controllers.Demo{}
-	publicRoute.GET("/ping", demo.Ping)
+	{
+		demo := &controllers.Demo{}
+		publicRoute.GET("/ping", demo.Ping)
+		publicRoute.GET("/redis/ping", demo.RedisPing)
+	}
 
 	ginpprof.Wrap(r)
 	return r
